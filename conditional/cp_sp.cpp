@@ -20,4 +20,5 @@ int main(){
   else{
     cout<<"No profit no loss"<<endl;
   }
+  return 0;
 }
