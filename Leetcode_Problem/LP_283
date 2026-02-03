@@ -1,0 +1,42 @@
+#include<iostream>
+#include<vector>
+
+using std::cout;
+using std::endl;
+using std::vector;
+
+
+
+// class Solution {
+// public:
+//     void moveZeroes(vector<int>& nums) {
+//         int k = 0; // index of non 0
+//         for(int i=0;i<nums.size();i++){
+//             if(nums[i]!=0){
+//                 nums[k] = nums[i];
+//                 k++;
+//             }
+//         }
+//         while(k<nums.size()){
+//             nums[k] = 0;
+//             k++;
+//         }
+
+//     }
+// };
+
+// method 2
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int j = 0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]!=0){
+                // swap
+                std::swap(nums[i],nums[j]);
+                j++;
+            }
+        }
+    }
+};
