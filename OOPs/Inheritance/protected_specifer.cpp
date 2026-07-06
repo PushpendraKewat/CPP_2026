@@ -11,9 +11,13 @@ class A{
     int a_ka_public;
 };
 
+class B : public A{
+    public:
+    int b_ka_public;
+};
 
 int main(){
-    A a;
-    a.a_ka_public;
+    B b1;
+    b1.b_ka_public;
     return 0;
 }
