@@ -9,6 +9,7 @@ public:
         ListNode* large = &b;
 
         ListNode* temp = head;
+        
 
         while (temp != nullptr) {
 
