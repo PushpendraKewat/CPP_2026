@@ -1,3 +1,34 @@
+// method 3 (with deque)
+
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        if (k == 1) return nums;
+
+        int n = nums.size();
+        vector<int> ans;
+        deque<int> dq; // stores indices
+
+        for (int i = 0; i < n; i++) {
+
+            // Remove smaller elements from the back
+            while (!dq.empty() && nums[i] >= nums[dq.back()]) {
+                dq.pop_back();
+            }
+            int j = i-k+1;
+            while (!dq.empty() && dq.front() < j) {
+                dq.pop_front();
+            }
+            dq.push_back(i);
+            if (i >= k - 1) {
+                ans.push_back(nums[dq.front()]);
+            }
+        }
+
+        return ans;
+    }
+};
+
 // method 2 (with stack)
 class Solution {
 public:
