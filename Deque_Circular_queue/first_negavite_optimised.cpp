@@ -21,7 +21,7 @@ vector<int> firstNegativeWindow(vector<int>& v, int k) {
     // Process each window
     for (int i = 0; i < n - k+1; i++) {
 
-        // Remove indices outside the current window
+        // Remove indices outside  the current window
         while (!q.empty() && q.front() < i) q.pop();
 
         // Check if first negative lies inside current window
