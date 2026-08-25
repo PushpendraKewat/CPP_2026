@@ -1,11 +1,30 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
+// METHOD 2 USING HEAP AND PAIR
+class Solution {
+public:
+    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        priority_queue<pair<int, int>> pq;
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::vector;
+        for (int num : arr) {
+            pq.push({abs(num - x), num});
+
+            if (pq.size() > k) {
+                pq.pop();
+            }
+        }
+
+        vector<int> ans;
+
+        while (!pq.empty()) {
+            ans.push_back(pq.top().second);
+            pq.pop();
+        }
+
+        sort(ans.begin(), ans.end());
+
+        return ans;
+    }
+};
+
 
 class Solution {
 public:
