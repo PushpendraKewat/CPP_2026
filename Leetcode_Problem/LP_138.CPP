@@ -1,3 +1,51 @@
+// method 3 hashmap approach 
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if (head == nullptr) return nullptr;
+
+        Node dummy(-1);
+        Node* tail = &dummy;
+        Node* temp = head;
+
+        // Step 1: Create copy list (next pointers only)
+        while (temp != nullptr) {
+            Node* copy = new Node(temp->val);
+            tail->next = copy;
+            tail = tail->next;
+            temp = temp->next;
+        }
+
+        Node* a = head;
+        Node* b = dummy.next;
+
+        // Step 2: Map original node -> copied node
+        unordered_map<Node*, Node*> m;
+
+        Node* tempA = a;
+        Node* tempB = b;
+
+        while (tempA != nullptr) {
+            m[tempA] = tempB;
+            tempA = tempA->next;
+            tempB = tempB->next;
+        }
+
+        // Step 3: Set random pointers
+        for (auto x : m) {
+            Node* o = x.first;
+            Node* d = x.second;
+
+            if (o->random != nullptr) {
+                d->random = m[o->random];
+            }
+        }
+
+        return dummy.next;
+    }
+};
+
+
 // method 2 (optimized)
 
 class Solution {
